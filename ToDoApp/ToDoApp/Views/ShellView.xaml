@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="ShellView" Height="450" Width="800">
     <Grid>
-        
+        <ListView ItemsSource="{Binding Path=Tasks}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" Width="Auto" 
+                   DisplayMemberBinding="{Binding Id}" >
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding TaskName}" 
+                   Header="Name" Width="Auto"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}" 
+               Header="Desc" Width="Auto"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

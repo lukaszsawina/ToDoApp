@@ -1,0 +1,10 @@
+C:\dev\C#\ToDoApp\ToDoApp\ToDoDatabase\bin\Debug\ToDoDatabase.dacpac
+C:\dev\C#\ToDoApp\ToDoApp\ToDoDatabase\bin\Debug\ToDoDatabase.dll
+C:\dev\C#\ToDoApp\ToDoApp\ToDoDatabase\bin\Debug\ToDoDatabase.pdb
+C:\dev\C#\ToDoApp\ToDoApp\ToDoDatabase\obj\Debug\ToDoDatabase.sqlproj.AssemblyReference.cache
+C:\dev\C#\ToDoApp\ToDoApp\ToDoDatabase\obj\Debug\Model.xml
+C:\dev\C#\ToDoApp\ToDoApp\ToDoDatabase\obj\Debug\refactor.xml
+C:\dev\C#\ToDoApp\ToDoApp\ToDoDatabase\obj\Debug\postdeploy.sql
+C:\dev\C#\ToDoApp\ToDoApp\ToDoDatabase\obj\Debug\predeploy.sql
+C:\dev\C#\ToDoApp\ToDoApp\ToDoDatabase\obj\Debug\ToDoDatabase.dll
+C:\dev\C#\ToDoApp\ToDoApp\ToDoDatabase\obj\Debug\ToDoDatabase.pdb

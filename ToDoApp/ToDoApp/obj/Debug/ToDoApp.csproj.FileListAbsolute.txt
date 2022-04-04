@@ -29,3 +29,7 @@ C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\obj\Debug\ToDoApp.csproj.CoreCompileInputs.cac
 C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\obj\Debug\ToDoApp.csproj.CopyComplete
 C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\obj\Debug\ToDoApp.exe
 C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\obj\Debug\ToDoApp.pdb
+C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\bin\Debug\DataAccess.dll
+C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\bin\Debug\DataAccess.pdb
+C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\bin\Debug\Dapper.dll
+C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\bin\Debug\Dapper.xml
