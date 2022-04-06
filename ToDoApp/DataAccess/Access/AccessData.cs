@@ -8,16 +8,21 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Access
 {
-    public class AccessData
+    public class AccessData : IAccessData
     {
-        public List<TaskModel> TestConnection()
+        public List<TaskModel> LoadData(string viewName, string connectionID = "taskDB")
         {
-            using (IDbConnection cnn = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("TaskDB")))
+            using(IDbConnection conn = new System.Data.SqlClient.SqlConnection(Helper.CnnVal(connectionID)))
             {
-                var output = cnn.Query<TaskModel>("SELECT * FROM dbo.Task").ToList();
+                string sql = $"SELECT * FROM { viewName }";
 
-                return output;
+                return conn.Query<TaskModel>(sql).ToList();
             }
+        }
+
+        public bool SaveData(string storedProcedure, TaskModel parameter, string connectionID = "taskDB")
+        {
+            throw new NotImplementedException();
         }
     }
 }

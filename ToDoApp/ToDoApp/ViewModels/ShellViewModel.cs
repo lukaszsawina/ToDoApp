@@ -9,15 +9,29 @@ using System.Threading.Tasks;
 
 namespace ToDoApp.ViewModels
 {
-    public class ShellViewModel : Screen
+    public class ShellViewModel : Conductor<object>
     {
-        AccessData dbAccess = new AccessData();
+        AccessData accessData = new AccessData();
+
+        //private MainWindowViewModel _mainWindowViewModel = new MainWindowViewModel();
+
         public ShellViewModel()
         {
-            foreach(var t in dbAccess.TestConnection())
+            //ActiveItem = _mainWindowViewModel;
+
+            List<TaskModel> tasks = accessData.LoadData("DoneTask");  
+
+            if(tasks.Count == 0)
+            {
+                Tasks.Add(new TaskModel { Id=0, TaskName="Brak danych"});
+            }
+
+            foreach (var t in tasks)
             {
                 Tasks.Add(t);
             }
+
+            tasks.Clear();
         }
 
         private BindableCollection<DataAccess.TaskModel> _tasks = new BindableCollection<DataAccess.TaskModel>();
@@ -25,7 +39,7 @@ namespace ToDoApp.ViewModels
         public BindableCollection<DataAccess.TaskModel> Tasks
         {
             get { return _tasks; }
-            set 
+            set
             {
                 _tasks = value;
                 NotifyOfPropertyChange(() => Tasks);

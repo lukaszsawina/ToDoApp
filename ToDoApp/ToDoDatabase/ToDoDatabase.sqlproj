@@ -66,6 +66,10 @@
     <Build Include="dbo\Tables\Task.sql" />
     <Build Include="dbo\Views\FullTask.sql" />
     <Build Include="dbo\StoredProcedure\spAddNewTask.sql" />
+    <Build Include="dbo\Views\DoneTasks.sql" />
+    <Build Include="dbo\Views\UndoneTasks.sql" />
+    <Build Include="dbo\StoredProcedure\spChangeTaskStatus.sql" />
+    <Build Include="dbo\StoredProcedure\spChangeTask.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ToDoDatabase.refactorlog" />

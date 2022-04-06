@@ -33,3 +33,6 @@ C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\bin\Debug\DataAccess.dll
 C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\bin\Debug\DataAccess.pdb
 C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\bin\Debug\Dapper.dll
 C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\bin\Debug\Dapper.xml
+C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\obj\Debug\Views\MainWindowView.g.cs
+C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\obj\Debug\Views\MainWindowView.baml
+C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\obj\Debug\Template\TopButtonTemplate.baml
