@@ -6,7 +6,48 @@
              xmlns:local="clr-namespace:ToDoApp.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="dziala"/>
+    <Grid Background="#66717E">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- TITLE -->
+        <TextBlock Text="Task List"
+                   FontSize="28"
+                   Foreground="#fff"
+                   TextAlignment="left"
+                   FontWeight="Bold"
+                   Margin="6"
+                   />
+        
+       <!-- ITEM LIST -->
+
+        <ListView Grid.Row="1" x:Name="TaskList" ItemsSource="{Binding Tasks}" Style="{StaticResource ListViewStyle}">
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding TaskName}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SetDate}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding ExpirationDate}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Status}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- FOOTER -->
+        <Button x:Name="FilterBtn"
+                Grid.Row="2"
+                Content="Filtry"
+                Style="{StaticResource FilterButton}"/>
+
+
     </Grid>
 </UserControl>

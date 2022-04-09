@@ -5,21 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoApp.Views"
         mc:Ignorable="d"
-        Title="ShellView" Height="450" Width="800">
+        Title="ToDoApp" Height="800" Width="600"
+        ResizeMode="NoResize">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <ListView ItemsSource="{Binding Tasks}">
+        <!-- Top Bar -->
 
-            <ListView.View>
+        <Grid Grid.ColumnSpan="2"
+              Grid.Row="0"
+              Background="#32213A"
+              Height="50"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
 
-                <GridView AllowsColumnReorder="true">
+            <Button x:Name="EditBtn"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Content="Edit"
+                    Style="{StaticResource TopButton}"
+                    />
+            <Button x:Name="AddBtn"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Content="New"
+                    Style="{StaticResource TopButton}"/>
+        </Grid>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=TaskName}" Header="TaskName" Width="100"/>
-                </GridView>
-
-            </ListView.View>
-        </ListView>
+        
+        <!-- Middle part -->
+        <ContentControl Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    x:Name="ActiveItem">
+        </ContentControl>
 
     </Grid>
 </Window>

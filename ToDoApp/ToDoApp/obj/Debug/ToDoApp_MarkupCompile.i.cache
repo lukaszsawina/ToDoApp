@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\dev\C#\ToDoApp\ToDoApp\ToDoApp\App.xaml
-32123994730
+4-878113214
 
 10-1614004174
 21586301974
-Template\TopButtonTemplate.xaml;Views\MainWindowView.xaml;Views\ShellView.xaml;
+Theme\ButtonTheme.xaml;Theme\ListViewTheme.xaml;Views\MainWindowView.xaml;Views\ShellView.xaml;
 
 True
 

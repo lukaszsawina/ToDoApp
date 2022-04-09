@@ -12,7 +12,7 @@ namespace DataAccess.Access
     {
         public List<TaskModel> LoadData(string viewName, string connectionID = "taskDB")
         {
-            using(IDbConnection conn = new System.Data.SqlClient.SqlConnection(Helper.CnnVal(connectionID)))
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(Helper.CnnVal(connectionID)))
             {
                 string sql = $"SELECT * FROM { viewName }";
 
@@ -20,9 +20,11 @@ namespace DataAccess.Access
             }
         }
 
+
         public bool SaveData(string storedProcedure, TaskModel parameter, string connectionID = "taskDB")
         {
             throw new NotImplementedException();
         }
+
     }
 }
