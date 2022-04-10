@@ -18,11 +18,11 @@ namespace DataAccess
         { 
             get
             {
-                if(string.IsNullOrEmpty(ExpirationDate.ToString("dd.MM-HH:mm")))
+                if(string.IsNullOrEmpty(ExpirationDate.ToString("dd.MM")))
                 {
-                    return $"{ SetDate.ToString("dd.MM-HH:mm") }";
+                    return $"{ SetDate.ToString("dd.MM") }";
                 }
-                return $"{ SetDate.ToString("dd.MM-HH:mm") } - { ExpirationDate.ToString("dd.MM-HH:mm") }";
+                return $"{ SetDate.ToString("dd.MM") } - { ExpirationDate.ToString("dd.MM") }";
 
             }
         }

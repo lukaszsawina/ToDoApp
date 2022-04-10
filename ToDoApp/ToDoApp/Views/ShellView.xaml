@@ -40,6 +40,13 @@
                     Grid.Row="0"
                     Grid.Column="2"
                     Content="New"
+                    Visibility="{Binding AddBtnIsVisible}"
+                    Style="{StaticResource TopButton}"/>
+            <Button x:Name="CloseBtn"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Content="Close"
+                    Visibility="{Binding CloseBtnIsVisible}"
                     Style="{StaticResource TopButton}"/>
         </Grid>
 

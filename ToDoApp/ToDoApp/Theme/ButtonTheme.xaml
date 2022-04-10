@@ -71,4 +71,37 @@
         <Setter Property="Margin" Value="5"/>
     </Style>
 
+    <Style x:Key="AddButton" TargetType="Button">
+        <Setter Property="Background" Value="#66717E"/>
+        <Setter Property="Padding" Value="0 8"/>
+        <Setter Property="Margin" Value="100"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="#fff"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#4D555F"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#3B4149"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
 </ResourceDictionary>
