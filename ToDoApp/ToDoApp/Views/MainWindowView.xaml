@@ -23,23 +23,37 @@
                    />
         
        <!-- ITEM LIST -->
+       
+        <ListView ItemsSource="{Binding Tasks}" ItemContainerStyle="{StaticResource TaskListTheme}" x:Name="TaskList" Grid.Row="1">
+            <!--<ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
 
-        <ListView Grid.Row="1" x:Name="TaskList" ItemsSource="{Binding Tasks}" Style="{StaticResource ListViewStyle}">
-            <ListView.View>
-                <GridView>
-                    <GridView.ColumnHeaderContainerStyle>
-                        <Style TargetType="{x:Type GridViewColumnHeader}">
-                            <Setter Property="Visibility" Value="Collapsed" />
-                        </Style>
-                    </GridView.ColumnHeaderContainerStyle>
-                    <GridViewColumn DisplayMemberBinding="{Binding Id}"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding TaskName}"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding SetDate}"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding ExpirationDate}"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Status}"/>
-                </GridView>
-            </ListView.View>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Column="0" Style="{StaticResource DoneButton}">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="2" ScaleY="2"/>
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <TextBlock Text="{Binding TaskName}" 
+                                   Grid.Column="1" 
+                                   HorizontalAlignment="Left" 
+                                   VerticalAlignment="Center"
+                                   FontSize="16"/>
+                        
+                        <TextBlock Text="{Binding FullDate}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>-->
         </ListView>
 
         <!-- FOOTER -->

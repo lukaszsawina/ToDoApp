@@ -14,7 +14,7 @@ namespace DataAccess.Access
         {
             using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(Helper.CnnVal(connectionID)))
             {
-                string sql = $"SELECT * FROM { viewName }";
+                string sql = $"SELECT * FROM dbo.Task";
 
                 return conn.Query<TaskModel>(sql).ToList();
             }

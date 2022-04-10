@@ -65,8 +65,10 @@
                 <Setter Property="Background" Value="#3B4149"/>
             </Trigger>
         </Style.Triggers>
+    </Style>
 
-        
+    <Style x:Key="DoneButton" TargetType="CheckBox">
+        <Setter Property="Margin" Value="5"/>
     </Style>
 
 </ResourceDictionary>
