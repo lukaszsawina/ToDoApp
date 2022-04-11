@@ -23,7 +23,13 @@ namespace DataAccess.Access
 
         public bool SaveData(string storedProcedure, TaskModel parameter, string connectionID = "taskDB")
         {
-            throw new NotImplementedException();
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(Helper.CnnVal(connectionID)))
+            {
+
+                conn.Execute(storedProcedure, new { taskName = parameter.TaskName, setDate = parameter.SetDate, expirationDate = parameter.ExpirationDate }, commandType: CommandType.StoredProcedure);
+
+                return true;
+            }
         }
 
     }

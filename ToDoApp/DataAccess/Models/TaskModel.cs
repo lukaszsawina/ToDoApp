@@ -10,19 +10,19 @@ namespace DataAccess
     {
         public int Id { get; set; }
         public string TaskName { get; set; }
-        public DateTime SetDate { get; set; }
-        public DateTime ExpirationDate { get; set; }
+        public string SetDate { get; set; }
+        public string ExpirationDate { get; set; }
         public string Status { get; set; }
 
         public string FullDate 
         { 
             get
             {
-                if(string.IsNullOrEmpty(ExpirationDate.ToString("dd.MM")))
+                if(string.IsNullOrEmpty(ExpirationDate))
                 {
-                    return $"{ SetDate.ToString("dd.MM") }";
+                    return $"{ SetDate }";
                 }
-                return $"{ SetDate.ToString("dd.MM") } - { ExpirationDate.ToString("dd.MM") }";
+                return $"{ SetDate } - { ExpirationDate }";
 
             }
         }

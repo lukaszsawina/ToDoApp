@@ -2,7 +2,7 @@
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [TaskName] NVARCHAR(100) NOT NULL, 
-    [SetDate] DATE NOT NULL, 
-    [ExpirationDate] DATE NULL, 
+    [SetDate] NVARCHAR(50) NOT NULL, 
+    [ExpirationDate] NVARCHAR(50) NULL, 
     [Status] NVARCHAR(50) NOT NULL
 )

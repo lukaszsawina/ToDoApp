@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -12,7 +13,6 @@ namespace ToDoApp.ViewModels
 {
     public class ShellViewModel : Conductor<object>
     {
-
 
         private MainWindowViewModel _mainWindowViewModel = new MainWindowViewModel();
         private NewTaskViewModel _newTaskViewModel = new NewTaskViewModel();
@@ -51,6 +51,8 @@ namespace ToDoApp.ViewModels
         //ButtonVisibility
         private Visibility _closeBtnIsVisible = Visibility.Hidden;
         private Visibility _addBtnIsVisible = Visibility.Visible;
+        //ButtonEnability
+        private bool _editBtnIsEnable = false;
 
         public Visibility CloseBtnIsVisible
         {
@@ -72,6 +74,15 @@ namespace ToDoApp.ViewModels
             }
         }
 
+        public bool EditBtnIsEnable
+        {
+            get { return _editBtnIsEnable; }
+            set
+            {
+                _editBtnIsEnable = value;
+                NotifyOfPropertyChange(() => EditBtnIsEnable);
+            }
+        }
 
     }
 }

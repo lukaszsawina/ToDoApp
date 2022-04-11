@@ -11,10 +11,14 @@ namespace ToDoApp.ViewModels
 {
     public class MainWindowViewModel: Screen
     {
+
+
         AccessData accessData = new AccessData();
+        TaskModel selectedTask;
 
         public MainWindowViewModel()
         {
+
             var tasks = accessData.LoadData("FullTask");
 
             if (tasks.Count == 0)
@@ -41,5 +45,10 @@ namespace ToDoApp.ViewModels
                 NotifyOfPropertyChange(() => Tasks);
             }
         }
+        public void ChangeSelect(System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+        }
+
+
     }
 }

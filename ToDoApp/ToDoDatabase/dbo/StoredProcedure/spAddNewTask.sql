@@ -1,9 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[spAddNewTask]
 	@taskName nvarchar(100),
-	@setDate date,
-	@expirationDate date
+	@setDate nvarchar(50),
+	@expirationDate nvarchar(50)
 AS
 	
-	INSERT INTO dbo.Task (TaskName, SetDate, ExpirationDate) VALUES (@taskName, @setDate, @expirationDate)
+	INSERT INTO dbo.Task (TaskName, SetDate, ExpirationDate, Status) VALUES (@taskName, @setDate, @expirationDate, 'Undone')
 
 RETURN 0
