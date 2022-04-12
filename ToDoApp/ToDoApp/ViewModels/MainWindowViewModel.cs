@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDoApp.EventsModel;
 
 namespace ToDoApp.ViewModels
 {
@@ -15,10 +16,12 @@ namespace ToDoApp.ViewModels
 
         AccessData accessData = new AccessData();
         TaskModel selectedTask;
+        private IEventAggregator _events;
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(IEventAggregator events)
         {
-
+            _events = events;
+            
             var tasks = accessData.LoadData("FullTask");
 
             if (tasks.Count == 0)
@@ -47,6 +50,8 @@ namespace ToDoApp.ViewModels
         }
         public void ChangeSelect(System.Windows.Controls.SelectionChangedEventArgs e)
         {
+
+            _events.BeginPublishOnUIThread(new ChangeSelectionEvent());
         }
 
 

@@ -8,20 +8,25 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using ToDoApp.EventsModel;
 
 namespace ToDoApp.ViewModels
 {
-    public class ShellViewModel : Conductor<object>
+    public class ShellViewModel : Conductor<object>, IHandle<ChangeSelectionEvent>
     {
-
-        private MainWindowViewModel _mainWindowViewModel = new MainWindowViewModel();
-        private NewTaskViewModel _newTaskViewModel = new NewTaskViewModel();
+        private IEventAggregator _events;
+        private MainWindowViewModel _mainWindowViewModel;
+        private NewTaskViewModel _newTaskViewModel;
 
         /// <summary>
         /// Default constructor, open main widnow when start
         /// </summary>
-        public ShellViewModel()
+        public ShellViewModel(IEventAggregator events)
         {
+            _events = events;
+            events.Subscribe(this);
+            _mainWindowViewModel = new MainWindowViewModel(_events);
+            _newTaskViewModel = new NewTaskViewModel();
             ActiveItem = _mainWindowViewModel;
         }
 
@@ -46,6 +51,11 @@ namespace ToDoApp.ViewModels
             ActiveItem = _mainWindowViewModel;
             CloseBtnIsVisible = Visibility.Hidden;
             AddBtnIsVisible = Visibility.Visible;
+        }
+
+        public void Handle(ChangeSelectionEvent message)
+        {
+            EditBtnIsEnable = true;
         }
 
         //ButtonVisibility
