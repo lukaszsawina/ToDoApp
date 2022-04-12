@@ -63,10 +63,18 @@ namespace ToDoApp.ViewModels
             RefreshData();
         }
 
-        public void DoneTask(object e)
+        public async Task DoneTask(TaskModel e)
         {
+            await Task.Delay(500);
 
+            DeleteTask(e);
         }
 
+        private void DeleteTask(TaskModel e)
+        {
+            accessData.ChangeDataStatus("spChangeTaskStatus", e);
+            Tasks.Remove(e);
+            Tasks.Refresh();
+        }
     }
 }

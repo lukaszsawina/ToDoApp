@@ -10,6 +10,15 @@ namespace DataAccess.Access
 {
     public class AccessData : IAccessData
     {
+        public void ChangeDataStatus(string storedProcedure, TaskModel task, string connectionID = "taskDB")
+        {
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(Helper.CnnVal(connectionID)))
+            {
+
+                conn.Execute(storedProcedure, new { TaskId = task.Id, Status = "Done" }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public List<TaskModel> LoadData(string viewName, string connectionID = "taskDB")
         {
             using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(Helper.CnnVal(connectionID)))
@@ -31,6 +40,8 @@ namespace DataAccess.Access
                 return true;
             }
         }
+
+
 
     }
 }

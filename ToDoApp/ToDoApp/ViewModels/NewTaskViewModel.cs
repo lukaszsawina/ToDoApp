@@ -106,7 +106,7 @@ namespace ToDoApp.ViewModels
         /// </summary>
         /// <param name="e"></param>
         /// <returns></returns>
-        public async Task AddNewTask(object e)
+        public async Task AddNewTaskAsync(object e)
         {
             if(!string.IsNullOrEmpty(NewTaskName))
             {

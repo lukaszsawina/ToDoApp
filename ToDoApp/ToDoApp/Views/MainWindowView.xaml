@@ -22,7 +22,6 @@
                    TextAlignment="left"
                    FontWeight="Bold"
                    Margin="6"
-                   
                    />
         
        <!-- ITEM LIST -->
@@ -52,18 +51,18 @@
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
                                         <CheckBox Grid.Column="0" Style="{StaticResource DoneButton}" VerticalAlignment="Center" HorizontalAlignment="Center"
-                                      cal:Message.Attach="[Event CheckStateChanged ]=[Action DoneTask($eventArgs)]">
+                                                  cal:Message.Attach="[Event Click]=[Action DoneTask($dataContext)]">
                                             <CheckBox.LayoutTransform>
                                                 <ScaleTransform ScaleX="2" ScaleY="2"/>
                                             </CheckBox.LayoutTransform>
                                         </CheckBox>
                                         <TextBlock Text="{Binding TaskName}" 
-                                   Grid.Column="1" 
-                                   HorizontalAlignment="Left" 
-                                   VerticalAlignment="Center"
-                                   FontSize="16"/>
-
-                                        <TextBlock Text="{Binding FullDate}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                   Grid.Column="1" 
+                                                   HorizontalAlignment="Left" 
+                                                   VerticalAlignment="Center"
+                                                   FontSize="22"
+                                                   FontWeight="Light"/>
+                                        <TextBlock Text="{Binding FullDate}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10 0"/>
 
 
                                     </Grid>
@@ -81,7 +80,8 @@
         <Button x:Name="FilterBtn"
                 Grid.Row="2"
                 Content="Filtry"
-                Style="{StaticResource FilterButton}"/>
+                Style="{StaticResource FilterButton}"
+                />
 
 
     </Grid>
