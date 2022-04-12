@@ -7,16 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using ToDoApp.EventsModel;
+
 
 namespace ToDoApp.ViewModels
 {
     public class NewTaskViewModel : Screen
     {
+
         private string _newTaskName;
         private DateTime _expirationDate;
+        private IEventAggregator _events;
 
-
+        //DatabaseAccess
         AccessData DBaccess = new AccessData();
+
+        public NewTaskViewModel(IEventAggregator events)
+        {
+            _events = events;
+        }
 
         public DateTime ExpirationDate
         {
@@ -28,7 +37,6 @@ namespace ToDoApp.ViewModels
             }
         }
 
-
         public string NewTaskName
         {
             get { return _newTaskName; }
@@ -39,6 +47,32 @@ namespace ToDoApp.ViewModels
             }
         }
 
+        private string _result_info;
+        public string Result_info
+        {
+            get { return _result_info; }
+            set 
+            { 
+                _result_info = value;
+                NotifyOfPropertyChange(() => Result_info);
+            }
+        }
+
+        private bool _addBtnIsEnable = true;
+
+        public bool AddBtnIsEnable
+        {
+            get { return _addBtnIsEnable; }
+            set 
+            { 
+                _addBtnIsEnable = value;
+                NotifyOfPropertyChange(() => AddBtnIsEnable);
+            }
+        }
+
+
+
+        //Info visibility
         private Visibility _resultIsVisible = Visibility.Hidden;
 
         public Visibility ResultIsVisible
@@ -51,39 +85,57 @@ namespace ToDoApp.ViewModels
             }
         }
 
-        private string _resutl_info;
-
-        public string Resutl_info
+        private async Task ChangeVisibilityInfoAsync()
         {
-            get { return _resutl_info; }
-            set 
-            { 
-                _resutl_info = value;
-                NotifyOfPropertyChange(() => Resutl_info);
-            }
+            AddBtnIsEnable = false;
+
+            ResultIsVisible = Visibility.Visible;
+            await Task.Delay(1500);
+            ResultIsVisible = Visibility.Hidden;
+
+            AddBtnIsEnable = true;
         }
 
+        private void ClearInputs()
+        {
+            NewTaskName = "";
+        }
 
+        /// <summary>
+        /// Event when add button is pressed
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
         public async Task AddNewTask(object e)
         {
-            TaskModel newTask = new TaskModel();
-            newTask.TaskName = NewTaskName;
-            newTask.ExpirationDate = ExpirationDate.ToString("dd.MM");
-            newTask.SetDate = DateTime.Now.ToString("dd.MM");
-            newTask.Status = "Undone";
-
-            try
+            if(!string.IsNullOrEmpty(NewTaskName))
             {
-                DBaccess.SaveData("spAddNewTask", newTask);
+                TaskModel newTask = new TaskModel();
+                newTask.TaskName = NewTaskName;
+                newTask.ExpirationDate = ExpirationDate.ToString("dd.MM");
+                newTask.SetDate = DateTime.Now.ToString("dd.MM");
+                newTask.Status = "Undone";
 
-                ResultIsVisible = Visibility.Visible;
-                await Task.Delay(1500);
-                ResultIsVisible = Visibility.Hidden;
+                try
+                {
+                    DBaccess.SaveData("spAddNewTask", newTask);
+                    _events.BeginPublishOnUIThread(new SuccessAddTaskEvent());
 
+                    Result_info = "Task add successfull";
+                    ClearInputs();
+                    await ChangeVisibilityInfoAsync();
+                }
+                catch (Exception)
+                {
+                    Result_info = "ERROR";
+                    await ChangeVisibilityInfoAsync();
+
+                }
             }
-            catch (Exception)
+            else
             {
-                Resutl_info = "ERROR";
+                Result_info = "Error! Type Task Name";
+                await ChangeVisibilityInfoAsync();
             }
 
 

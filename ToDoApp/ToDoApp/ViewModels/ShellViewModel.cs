@@ -26,7 +26,7 @@ namespace ToDoApp.ViewModels
             _events = events;
             events.Subscribe(this);
             _mainWindowViewModel = new MainWindowViewModel(_events);
-            _newTaskViewModel = new NewTaskViewModel();
+            _newTaskViewModel = new NewTaskViewModel(_events);
             ActiveItem = _mainWindowViewModel;
         }
 
@@ -51,11 +51,6 @@ namespace ToDoApp.ViewModels
             ActiveItem = _mainWindowViewModel;
             CloseBtnIsVisible = Visibility.Hidden;
             AddBtnIsVisible = Visibility.Visible;
-        }
-
-        public void Handle(ChangeSelectionEvent message)
-        {
-            EditBtnIsEnable = true;
         }
 
         //ButtonVisibility
@@ -84,6 +79,9 @@ namespace ToDoApp.ViewModels
             }
         }
 
+        /// <summary>
+        /// Change enability of Edit button
+        /// </summary>
         public bool EditBtnIsEnable
         {
             get { return _editBtnIsEnable; }
@@ -92,6 +90,14 @@ namespace ToDoApp.ViewModels
                 _editBtnIsEnable = value;
                 NotifyOfPropertyChange(() => EditBtnIsEnable);
             }
+        }
+        /// <summary>
+        /// Event when selected was changed
+        /// </summary>
+        /// <param name="message">type of event</param>
+        public void Handle(ChangeSelectionEvent message)
+        {
+            EditBtnIsEnable = true;
         }
 
     }

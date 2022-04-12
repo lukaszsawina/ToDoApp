@@ -27,7 +27,55 @@
         
        <!-- ITEM LIST -->
 
-        <ListView  ItemsSource="{Binding Tasks}" cal:Message.Attach="[Event SelectionChanged]=[Action ChangeSelect($eventArgs)]" ItemContainerStyle="{StaticResource TaskListTheme}" x:Name="TaskList" Grid.Row="1"/>
+        <ListView  HorizontalAlignment="Stretch" ItemsSource="{Binding Tasks}" cal:Message.Attach="[Event SelectionChanged]=[Action ChangeSelect($eventArgs)]" x:Name="TaskList" Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#68777D"/>
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="Background" Value="#9CAFB7"/>
+
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <Border Background="{TemplateBinding Background}" 
+                            Height="50"
+                            CornerRadius="5"
+                            Margin="2 4">
+                                    <Grid >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox Grid.Column="0" Style="{StaticResource DoneButton}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                      cal:Message.Attach="[Event CheckStateChanged ]=[Action DoneTask($eventArgs)]">
+                                            <CheckBox.LayoutTransform>
+                                                <ScaleTransform ScaleX="2" ScaleY="2"/>
+                                            </CheckBox.LayoutTransform>
+                                        </CheckBox>
+                                        <TextBlock Text="{Binding TaskName}" 
+                                   Grid.Column="1" 
+                                   HorizontalAlignment="Left" 
+                                   VerticalAlignment="Center"
+                                   FontSize="16"/>
+
+                                        <TextBlock Text="{Binding FullDate}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+                                    </Grid>
+                                </Border>
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+            </ListView.ItemContainerStyle>
+        </ListView>
 
         <!-- FOOTER -->
         <Button x:Name="FilterBtn"

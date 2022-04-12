@@ -10,31 +10,19 @@ using ToDoApp.EventsModel;
 
 namespace ToDoApp.ViewModels
 {
-    public class MainWindowViewModel: Screen
+    public class MainWindowViewModel: Screen, IHandle<SuccessAddTaskEvent>
     {
 
 
         AccessData accessData = new AccessData();
-        TaskModel selectedTask;
         private IEventAggregator _events;
 
         public MainWindowViewModel(IEventAggregator events)
         {
             _events = events;
-            
-            var tasks = accessData.LoadData("FullTask");
+            events.Subscribe(this);
 
-            if (tasks.Count == 0)
-            {
-                Tasks.Add(new TaskModel { Id = 0, TaskName = "Brak danych" });
-            }
-
-            foreach (var t in tasks)
-            {
-                Tasks.Add(t);
-            }
-
-            tasks.Clear();
+            RefreshData();
         }
 
         private BindableCollection<DataAccess.TaskModel> _tasks = new BindableCollection<DataAccess.TaskModel>();
@@ -50,10 +38,35 @@ namespace ToDoApp.ViewModels
         }
         public void ChangeSelect(System.Windows.Controls.SelectionChangedEventArgs e)
         {
-
             _events.BeginPublishOnUIThread(new ChangeSelectionEvent());
         }
 
+        private void RefreshData()
+        {
+            var tasks = accessData.LoadData("FullTask");
+
+            if (tasks.Count == 0)
+            {
+                Tasks.Add(new TaskModel { Id = 0, TaskName = "Brak danych" });
+            }
+
+            foreach (var t in tasks)
+            {
+                Tasks.Add(t);
+            }
+
+            tasks.Clear();
+        }
+
+        public void Handle(SuccessAddTaskEvent message)
+        {
+            RefreshData();
+        }
+
+        public void DoneTask(object e)
+        {
+
+        }
 
     }
 }

@@ -12,7 +12,6 @@
                 </ResourceDictionary>
 
                 <ResourceDictionary Source="Theme/ButtonTheme.xaml"/>
-                <ResourceDictionary Source="Theme/ListViewTheme.xaml"/>
                 <ResourceDictionary Source="Theme/LabelTextTheme.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>

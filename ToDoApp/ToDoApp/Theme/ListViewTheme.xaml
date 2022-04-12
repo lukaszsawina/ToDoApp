@@ -1,5 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:cal="http://www.caliburnproject.org"
+                    
                     >
 
     <Style TargetType="{x:Type ListViewItem}" x:Key="TaskListTheme">
@@ -24,7 +26,8 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                            <CheckBox Grid.Column="0" Style="{StaticResource DoneButton}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <CheckBox Grid.Column="0" Style="{StaticResource DoneButton}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                      cal:Message.Attach="[Event CheckedChange ]=[Action DoneTask($eventArgs)]">
                                 <CheckBox.LayoutTransform>
                                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                                 </CheckBox.LayoutTransform>

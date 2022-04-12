@@ -24,9 +24,9 @@
         <Calendar Margin="16 0"
                   Style="{StaticResource resizedCalendarItem}"/>
 
-        <TextBlock Text="Task Add Successfull" x:Name="Result_info" HorizontalAlignment="Center" Foreground="#f00" FontSize="16" FontWeight="Bold"
+        <TextBlock Text="{Binding Result_info}" x:Name="Result_info" HorizontalAlignment="Center" Foreground="#f00" FontSize="16" FontWeight="Bold"
                    Visibility="{Binding ResultIsVisible}" Margin="0 90 0 0"/>
-        <Button Style="{StaticResource AddButton}" cal:Message.Attach="[Event Click]=[Action AddNewTask($dataContext)]"  Content="Add"/>
+        <Button Style="{StaticResource AddButton}" IsEnabled="{Binding AddBtnIsEnable}" cal:Message.Attach="[Event Click]=[Action AddNewTask($dataContext)]"  Content="Add"/>
 
     </StackPanel>
 </UserControl>
