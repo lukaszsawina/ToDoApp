@@ -13,6 +13,8 @@ namespace ToDoApp.ViewModels
     public class MainWindowViewModel: Screen, IHandle<SuccessAddTaskEvent>
     {
 
+        private TaskModel _selectedTask = new TaskModel();
+
 
         AccessData accessData = new AccessData();
         private IEventAggregator _events;
@@ -38,7 +40,9 @@ namespace ToDoApp.ViewModels
         }
         public void ChangeSelect(System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            _events.BeginPublishOnUIThread(new ChangeSelectionEvent());
+            _selectedTask = (TaskModel)e.AddedItems[0];
+            _events.BeginPublishOnUIThread(new ChangeSelectionEvent(_selectedTask));
+
         }
 
         private void RefreshData()

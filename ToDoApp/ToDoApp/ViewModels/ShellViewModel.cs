@@ -41,6 +41,8 @@ namespace ToDoApp.ViewModels
             CloseBtnIsVisible = Visibility.Visible;
             //Hide Add button
             AddBtnIsVisible = Visibility.Hidden;
+
+            EditBtnIsEnable = false;
         }
 
         /// <summary>
@@ -51,6 +53,9 @@ namespace ToDoApp.ViewModels
             ActiveItem = _mainWindowViewModel;
             CloseBtnIsVisible = Visibility.Hidden;
             AddBtnIsVisible = Visibility.Visible;
+
+            EditBtnIsEnable = false;
+
         }
 
         //ButtonVisibility
@@ -91,6 +96,9 @@ namespace ToDoApp.ViewModels
                 NotifyOfPropertyChange(() => EditBtnIsEnable);
             }
         }
+
+        private TaskModel _selectedTask = new TaskModel();
+
         /// <summary>
         /// Event when selected was changed
         /// </summary>
@@ -98,6 +106,17 @@ namespace ToDoApp.ViewModels
         public void Handle(ChangeSelectionEvent message)
         {
             EditBtnIsEnable = true;
+            _selectedTask = message.SelectedTask;
+        }
+
+        public void EditBtn()
+        {
+            ActiveItem = new EditViewModel(_selectedTask);
+
+            //Show Close button
+            CloseBtnIsVisible = Visibility.Visible;
+            //Hide Add button
+            AddBtnIsVisible = Visibility.Hidden;
         }
 
     }

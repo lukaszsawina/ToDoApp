@@ -21,7 +21,8 @@
         <TextBlock Text="Name" Style="{StaticResource LabelTextTheme}"/>
         <TextBox x:Name="NewTaskName" Style="{StaticResource TextBoxTheme}"/>
         <TextBlock Text="Expiration date" Style="{StaticResource LabelTextTheme}"/>
-        <Calendar Margin="16 0"
+        <Calendar SelectedDate="{Binding ExpirationDate}"
+                  Margin="16 0"
                   Style="{StaticResource resizedCalendarItem}"/>
 
         <TextBlock Text="{Binding Result_info}" x:Name="Result_info" HorizontalAlignment="Center" Foreground="#f00" FontSize="16" FontWeight="Bold"
