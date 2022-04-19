@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ToDoApp.Views"
+             xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel >
@@ -27,7 +28,7 @@
 
         <TextBlock Text="{Binding Result_info}" x:Name="Result_info" HorizontalAlignment="Center" Foreground="#f00" FontSize="16" FontWeight="Bold"
                    Visibility="{Binding ResultIsVisible}" Margin="0 90 0 0"/>
-        <Button Style="{StaticResource AddButton}" IsEnabled="{Binding AddBtnIsEnable}"  Content="Save"/>
+        <Button Style="{StaticResource AddButton}" IsEnabled="{Binding EditBtnIsEnable}" cal:Message.Attach="[Event Click]=[Action ChangeTaskAsync($dataContext)]"  Content="Save"/>
 
     </StackPanel>
 </UserControl>

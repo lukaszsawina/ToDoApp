@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[spChangeTask]
 	@TaskId int,
 	@TaskName nvarchar(100),
-	@TaskExpirationDate date,
+	@TaskExpirationDate nvarchar(50),
 	@TaskStatus nvarchar(50)
 AS
 	UPDATE dbo.Task

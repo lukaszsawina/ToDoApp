@@ -82,6 +82,7 @@
     </Compile>
     <Compile Include="EventsModel\ChangeSelectionEvent.cs" />
     <Compile Include="EventsModel\SuccessAddTaskEvent.cs" />
+    <Compile Include="EventsModel\SuccessTaskChangedEvent.cs" />
     <Compile Include="ViewModels\EditViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\NewTaskViewModel.cs" />

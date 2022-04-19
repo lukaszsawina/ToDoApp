@@ -20,7 +20,7 @@ namespace DataAccess
             {
                 if(string.IsNullOrEmpty(ExpirationDate))
                 {
-                    return $"{ SetDate }";
+                    return $"{ SetDate } - x x.x x";
                 }
                 return $"{ SetDate } - { ExpirationDate }";
 

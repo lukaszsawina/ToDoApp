@@ -12,7 +12,7 @@ using ToDoApp.EventsModel;
 
 namespace ToDoApp.ViewModels
 {
-    public class ShellViewModel : Conductor<object>, IHandle<ChangeSelectionEvent>
+    public class ShellViewModel : Conductor<object>, IHandle<ChangeSelectionEvent>, IHandle<SuccessTaskChangedEvent>
     {
         private IEventAggregator _events;
         private MainWindowViewModel _mainWindowViewModel;
@@ -111,7 +111,7 @@ namespace ToDoApp.ViewModels
 
         public void EditBtn()
         {
-            ActiveItem = new EditViewModel(_selectedTask);
+            ActiveItem = new EditViewModel(_events, _selectedTask);
 
             //Show Close button
             CloseBtnIsVisible = Visibility.Visible;
@@ -119,5 +119,9 @@ namespace ToDoApp.ViewModels
             AddBtnIsVisible = Visibility.Hidden;
         }
 
+        public void Handle(SuccessTaskChangedEvent message)
+        {
+            CloseBtn();
+        }
     }
 }

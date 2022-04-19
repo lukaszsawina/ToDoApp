@@ -16,7 +16,7 @@ namespace ToDoApp.ViewModels
     {
 
         private string _newTaskName;
-        private DateTime _expirationDate;
+        private DateTime? _expirationDate = null;
         private IEventAggregator _events;
 
         //DatabaseAccess
@@ -27,7 +27,7 @@ namespace ToDoApp.ViewModels
             _events = events;
         }
 
-        public DateTime ExpirationDate
+        public DateTime? ExpirationDate
         {
             get { return _expirationDate; }
             set 
@@ -112,7 +112,8 @@ namespace ToDoApp.ViewModels
             {
                 TaskModel newTask = new TaskModel();
                 newTask.TaskName = NewTaskName;
-                newTask.ExpirationDate = ExpirationDate.ToString("dd.MM");
+                if(ExpirationDate != null)
+                newTask.ExpirationDate = ExpirationDate?.ToString("dd.MM");
                 newTask.SetDate = DateTime.Now.ToString("dd.MM");
                 newTask.Status = "Undone";
 

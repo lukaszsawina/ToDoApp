@@ -10,7 +10,7 @@ using ToDoApp.EventsModel;
 
 namespace ToDoApp.ViewModels
 {
-    public class MainWindowViewModel: Screen, IHandle<SuccessAddTaskEvent>
+    public class MainWindowViewModel: Screen, IHandle<SuccessAddTaskEvent>, IHandle<SuccessTaskChangedEvent>
     {
 
         private TaskModel _selectedTask = new TaskModel();
@@ -79,6 +79,11 @@ namespace ToDoApp.ViewModels
             accessData.ChangeDataStatus("spChangeTaskStatus", e);
             Tasks.Remove(e);
             Tasks.Refresh();
+        }
+
+        public void Handle(SuccessTaskChangedEvent message)
+        {
+            RefreshData();
         }
     }
 }
