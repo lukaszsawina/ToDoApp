@@ -11,7 +11,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
         
@@ -76,12 +75,6 @@
             </ListView.ItemContainerStyle>
         </ListView>
 
-        <!-- FOOTER -->
-        <Button x:Name="FilterBtn"
-                Grid.Row="2"
-                Content="Filtry"
-                Style="{StaticResource FilterButton}"
-                />
 
 
     </Grid>
